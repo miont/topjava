@@ -14,10 +14,10 @@ public class TimeUtil {
     }
 
     public static String formatLocalDateTime(LocalDateTime localDateTime, DateTimeFormatter formatter) {
-        return localDateTime.format(formatter);
+        return localDateTime != null ? localDateTime.format(formatter) : "";
     }
 
     public static String formatLocalDateTime(LocalDateTime localDateTime, String pattern) {
-        return localDateTime.format(DateTimeFormatter.ofPattern(pattern));
+        return localDateTime != null ? localDateTime.format(DateTimeFormatter.ofPattern(pattern)) : "";
     }
 }
