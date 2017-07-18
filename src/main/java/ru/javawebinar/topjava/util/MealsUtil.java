@@ -8,6 +8,8 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Month;
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 import java.util.stream.Collectors;
 
 public class MealsUtil {
@@ -54,11 +56,14 @@ public class MealsUtil {
     }
 
     public static MealWithExceed createWithExceed(Meal meal, boolean exceeded) {
-        return new MealWithExceed(meal.getDateTime(), meal.getDescription(), meal.getCalories(), exceeded);
+        return new MealWithExceed(meal.getId(), meal.getDateTime(), meal.getDescription(), meal.getCalories(), exceeded);
     }
 
-    public static List<Meal> getTestMeals() {
-        return Arrays.asList(
+
+    // Test meals
+    private static ConcurrentMap<Long, Meal> testMealsMap = new ConcurrentHashMap<>();
+    static {
+        List<Meal> mealList = Arrays.asList(
                 new Meal(LocalDateTime.of(2015, Month.MAY, 30, 10, 0), "Завтрак", 500),
                 new Meal(LocalDateTime.of(2015, Month.MAY, 30, 13, 0), "Обед", 1000),
                 new Meal(LocalDateTime.of(2015, Month.MAY, 30, 20, 0), "Ужин", 500),
@@ -72,5 +77,13 @@ public class MealsUtil {
                 new Meal(LocalDateTime.of(2015, Month.JUNE, 2, 12, 15), "Обед", 850),
                 new Meal(LocalDateTime.of(2015, Month.JUNE, 2, 19, 10), "Ужин", 400)
         );
+
+        for(Meal meal : mealList) {
+            testMealsMap.put(meal.getId(), meal);
+        }
+    }
+
+    public static Map<Long, Meal> getTestMealsMap() {
+        return testMealsMap;
     }
 }
