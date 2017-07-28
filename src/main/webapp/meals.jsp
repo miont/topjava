@@ -18,7 +18,41 @@
 <body>
 <section>
     <h3><a href="index.html">Home</a></h3>
+    <%--<div>User ${currentUser.name}</div>--%>
     <h2>Meal list</h2>
+    <form method="get">
+        <table>
+            <tr>
+                <td>
+                    <label>Date From:</label>
+                </td>
+                <td>
+                    <input type="date" name="dateFrom">
+                </td>
+                <td>
+                    <label>Time From:</label>
+                </td>
+                <td>
+                    <input type="time" name="timeFrom">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Date To:</label>
+                </td>
+                <td>
+                    <input type="date" name="dateTo">
+                </td>
+                <td>
+                    <label>Time To:</label>
+                </td>
+                <td>
+                    <input type="time" name="timeTo">
+                </td>
+            </tr>
+        </table>
+        <button type="submit">Filter</button>
+    </form>
     <a href="meals?action=create">Add Meal</a>
     <hr/>
     <table border="1" cellpadding="8" cellspacing="0">
