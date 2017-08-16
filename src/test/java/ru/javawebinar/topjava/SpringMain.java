@@ -20,12 +20,12 @@ public class SpringMain {
         // java 7 Automatic resource management
 //        try (ConfigurableApplicationContext appCtx = new ClassPathXmlApplicationContext("spring/spring-app.xml","spring/mock.xml")) {
         try (GenericXmlApplicationContext appCtx = new GenericXmlApplicationContext()) {
-            appCtx.getEnvironment().setActiveProfiles("hsqlbd", "jpa");
+            appCtx.getEnvironment().setActiveProfiles("hsqldb", "jpa");
             appCtx.load("spring/spring-app.xml","spring/spring-db.xml");
             appCtx.refresh();
             System.out.println("Bean definition names: " + Arrays.toString(appCtx.getBeanDefinitionNames()));
             AdminRestController adminUserController = appCtx.getBean(AdminRestController.class);
-            adminUserController.create(new User(null, "userName", "email", "password", Role.ROLE_ADMIN));
+            adminUserController.create(new User(null, "userName", "email@gmail.com", "password", Role.ROLE_ADMIN));
             System.out.println();
 
             MealRestController mealController = appCtx.getBean(MealRestController.class);
