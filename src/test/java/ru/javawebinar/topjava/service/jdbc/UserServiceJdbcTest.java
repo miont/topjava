@@ -1,6 +1,7 @@
-package ru.javawebinar.topjava.service;
+package ru.javawebinar.topjava.service.jdbc;
 
 import org.springframework.test.context.ActiveProfiles;
+import ru.javawebinar.topjava.service.UserServiceTest;
 
 /**
  * Created by clement on 16.08.17.
