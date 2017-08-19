@@ -1,8 +1,6 @@
 package ru.javawebinar.topjava.service;
 
-import org.junit.AfterClass;
-import org.junit.Rule;
-import org.junit.Test;
+import org.junit.*;
 import org.junit.rules.ExpectedException;
 import org.junit.rules.Stopwatch;
 import org.junit.runner.Description;
@@ -71,7 +69,12 @@ public abstract class MealServiceTest extends AbstractServiceTest {
     }
 
     @Autowired
-    private MealService service;
+    protected MealService service;
+
+    @BeforeClass
+    public static void init() {
+        results = new StringBuilder();
+    }
 
     @Test
     public void testDelete() throws Exception {

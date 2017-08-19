@@ -28,5 +28,8 @@ public interface CrudMealRepository extends JpaRepository<Meal, Integer> {
     @Override
     Meal findOne(Integer id);
 
+    @Query("SELECT m FROM Meal m LEFT JOIN FETCH m.user WHERE m.id=:id")
+    Meal findOneWithUser(@Param("id") Integer id);
+
     List<Meal> findByDateTimeBetweenOrderByDateTimeDesc(LocalDateTime startDate, LocalDateTime endDate);
 }
