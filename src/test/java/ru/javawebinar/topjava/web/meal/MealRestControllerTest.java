@@ -10,6 +10,7 @@ import ru.javawebinar.topjava.web.AbstractControllerTest;
 import ru.javawebinar.topjava.web.json.JsonUtil;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -83,14 +84,26 @@ public class MealRestControllerTest extends AbstractControllerTest {
         MATCHER.assertEquals(updated, mealService.get(MEAL1_ID, USER_ID));
     }
 
+//    @Test
+//    public void testGetBetween() throws Exception {
+//        mockMvc.perform(get(REST_URL + "filter")
+//                .param("startDateTime", "2015-05-30T00:00:00")
+//                .param("endDateTime", "2015-05-30T23:59:00")
+//        )
+//        .andDo(print())
+//        .andExpect(status().isOk());
+//    }
+
     @Test
     public void testGetBetween() throws Exception {
         mockMvc.perform(get(REST_URL + "filter")
-                .param("startDateTime", "2015-05-30T00:00:00")
-                .param("endDateTime", "2015-05-30T23:59:00")
+                .param("startDate", LocalDate.of(2015, Month.MAY, 30).toString())
+                .param("startTime", LocalTime.of(0,0,0).toString())
+                .param("endDate", LocalDate.of(2015, Month.MAY, 30).toString())
+                .param("endTime", LocalTime.of(23,59,0).toString())
         )
-        .andDo(print())
-        .andExpect(status().isOk());
+                .andDo(print())
+                .andExpect(status().isOk());
     }
 
 }
